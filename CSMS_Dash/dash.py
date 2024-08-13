@@ -1,9 +1,13 @@
+import os
+
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
 
 st.set_page_config(initial_sidebar_state="collapsed")
 
-pages = ["Home", "Library", "Tutorials", "Development", "Download"]
+pages = ["Library", "Tutorials", "Development", "Download"]
+dir=os.path.dirname(os.path.abspath(__file__))
+logo_path=os.path.join(dir, "MB-star_n_web.svg")
 styles = {
     "nav": {
         "background-color": "rgba(22, 22, 23, 80%)",
@@ -27,7 +31,9 @@ styles = {
 }
 
 
-page = st_navbar(pages, styles=styles)
+page = st_navbar(pages,
+                 logo_path=logo_path,
+                 styles=styles)
 st.write(page)
 
 with st.sidebar:
