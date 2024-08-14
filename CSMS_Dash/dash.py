@@ -3,9 +3,17 @@ import os
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
 
-pages = ["Chargers", "Transactions", "Meter Vaules", "Support", "\u2315"]
 dir=os.path.dirname(os.path.abspath(__file__))
 logo_path=os.path.join(dir, "MB-star_n_web.svg")
+
+st.set_page_config(
+    page_title="CSMS Dashboard",
+    page_icon=logo_path,
+    layout="wide",
+)
+
+pages = ["Chargers", "Transactions", "Meter Vaules", "Support", "\u2315"]
+
 
 styles = {
     "nav": {
