@@ -48,4 +48,9 @@ def add_bg_from_local():
         unsafe_allow_html=True
     )
 
-add_bg_from_local()
+functions = {
+    "Home": add_bg_from_local,
+}
+go_to = functions.get(page)
+if go_to :
+    go_to()
