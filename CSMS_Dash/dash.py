@@ -39,7 +39,7 @@ def add_bg_from_local():
         f"""
         <style>
         .stApp {{
-            background-image: url("https://www.motortrend.com/uploads/2021/12/2021-Mercedes-AMG-G63-27.jpg?w=512&width=512&q=75&format=webp");
+            background-image: url("https://www.mercedes-benz.com/content/dam/brandhub/assets/exclusive/private-lounges/amg-private-lounge/amg-private-lounge-2024/paul-ricard_03.cbv20240516093945.jpg/_jcr_content/renditions/mq3-original-aspect.jpeg");
             background-size: cover;
         }}
         </style>
