@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",
 )
 
-pages = ["Chargers", "Transactions", "Meter Vaules", "Support", "\u2315"]
+pages = ["Chargers", "Transactions", "Meter Vaules", "Support", "Search"]
 
 
 styles = {
