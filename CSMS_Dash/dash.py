@@ -44,6 +44,8 @@ page = st_navbar(pages,
                  styles=styles)
 
 def add_bg_from_local():
+    html_string ="<blockquote style=\"font-size: 32px;\"><b> <i> THE BEST OR NOTHING </i></b> </blockquote>"
+    st.markdown(html_string, unsafe_allow_html=True)
     st.markdown(
         f"""
         <style>
