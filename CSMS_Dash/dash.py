@@ -59,40 +59,42 @@ def add_bg_from_local():
 def search_menu():
     st.text_input(" ", placeholder="Search")
 
+def supportus():
+    st.markdown("### Charging Support\n")
+
+    st.markdown("**Welcome to our Charging Support Center!**\n")
+
+    st.markdown(
+        "We're here to ensure that your electric vehicle charging experience is smooth and hassle-free. Whether you're charging at home or on the go, our support team is ready to assist you with any questions or issues you may encounter.\n")
+
+    st.markdown("**Common Topics:**\n")
+    st.markdown(
+        "- **Setting Up Your Charger:** Step-by-step guides to help you install and configure your home charging station.")
+    st.markdown(
+        "- **Troubleshooting:** Solutions for common charging problems, such as slow charging, connectivity issues, or power interruptions.")
+    st.markdown(
+        "- **Public Charging:** Tips on finding and using public charging stations, including information on network memberships and payment options.")
+    st.markdown(
+        "- **Billing and Payments:** Detailed explanations of our billing process, how to view your usage, and understanding your payment options.\n")
+
+    st.markdown("**Contact Us:**\n")
+    st.markdown("- **Phone:** (+961) 01 255 366")
+    st.markdown("- **Email:** MercedesSupport@chargingsolutions.com")
+    st.markdown("- **Address:** Mercedes-Benz Building, Dora Highway, Beirut")
+    st.markdown(
+        "Our support team is available Monday through Friday, 9 AM to 6 PM PST. Don’t hesitate to reach out if you need help—your satisfaction is our top priority!")
+
+
 functions = {
     "Home": add_bg_from_local,
     "Search": search_menu,
+    "Support": supportus,
 }
 go_to = functions.get(page)
 if go_to :
     go_to()
 
-"""Sure! Here's the updated text with a fake phone number, PO Box, and address included:
 
----
 
-### Charging Support
 
-**Welcome to our Charging Support Center!**
 
-We're here to ensure that your electric vehicle charging experience is smooth and hassle-free. Whether you're charging at home or on the go, our support team is ready to assist you with any questions or issues you may encounter.
-
-**Common Topics:**
-
-- **Setting Up Your Charger:** Step-by-step guides to help you install and configure your home charging station.
-- **Troubleshooting:** Solutions for common charging problems, such as slow charging, connectivity issues, or power interruptions.
-- **Public Charging:** Tips on finding and using public charging stations, including information on network memberships and payment options.
-- **Billing and Payments:** Detailed explanations of our billing process, how to view your usage, and understanding your payment options.
-
-**Contact Us:**
-
-- **Phone:** (555) 123-4567
-- **Email:** support@chargingsolutions.com
-- **Address:** 123 Electric Ave, Suite 200, Green City, CA 90210
-- **PO Box:** PO Box 789, Green City, CA 90211
-
-Our support team is available Monday through Friday, 9 AM to 6 PM PST. Don’t hesitate to reach out if you need help—your satisfaction is our top priority!
-
----
-
-Feel free to customize any part of this to better fit your needs!"""
