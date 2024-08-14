@@ -31,11 +31,11 @@ styles = {
         "transition": "color, 0.2s",
     },
     "active": {
-        "color":"rgb(247, 9, 38)",
+        "color":"rgb(211, 33, 40)",
         "font-size":"18px",
     },
     "hover": {
-        "color":"rgb(247, 9, 38)",
+        "color":"rgb(211, 33, 40)",
     },
 }
 
@@ -48,7 +48,7 @@ def add_bg_from_local():
         f"""
         <style>
         .stApp {{
-            background-image: url("https://www.mercedes-benz.com/content/dam/brandhub/assets/exclusive/private-lounges/amg-private-lounge/amg-private-lounge-2024/paul-ricard_03.cbv20240516093945.jpg/_jcr_content/renditions/mq3-original-aspect.jpeg");
+            background-image: url("https://static0.carbuzzimages.com/wordpress/wp-content/uploads/gallery-images/original/835000/800/835890.jpg");
             background-size: cover;
         }}
         </style>
