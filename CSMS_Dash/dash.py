@@ -56,8 +56,12 @@ def add_bg_from_local():
         unsafe_allow_html=True
     )
 
+def search_menu():
+    st.text_input(" ", "Search", key="placeholder")
+
 functions = {
     "Home": add_bg_from_local,
+    "Search": search_menu,
 }
 go_to = functions.get(page)
 if go_to :
