@@ -23,7 +23,7 @@ styles = {
         "transition": "color, 0.2s",
     },
     "active": {
-        "color":"white",
+        "color":"rgb(247, 9, 38)",
     },
     "hover": {
         "color":"rgb(247, 9, 38)",
