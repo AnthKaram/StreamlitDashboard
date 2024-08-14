@@ -26,7 +26,7 @@ styles = {
         "color":"white",
     },
     "hover": {
-        "color":"white",
+        "color":"rgb(247, 9, 38)",
     },
 }
 
