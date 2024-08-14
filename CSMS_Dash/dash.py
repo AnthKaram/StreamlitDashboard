@@ -24,6 +24,7 @@ styles = {
     },
     "active": {
         "color":"rgb(247, 9, 38)",
+        "font-size":"18px",
     },
     "hover": {
         "color":"rgb(247, 9, 38)",
