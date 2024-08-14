@@ -57,7 +57,7 @@ def add_bg_from_local():
     )
 
 def search_menu():
-    st.text_input(" ", "Search", key="placeholder")
+    st.text_input(" ", placeholder="Search")
 
 functions = {
     "Home": add_bg_from_local,
