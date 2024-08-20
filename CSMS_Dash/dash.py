@@ -57,9 +57,118 @@ def add_bg_from_local():
         """,
         unsafe_allow_html=True
     )
+def ChargerInfo():
+    st.markdown(
+        f"""
+            <div class="Grid">
+            <div class="gridtitle">Charger</div>
+            
+            <div class="gridtitle">Meter Values</div>
+            
+            <div>WallBox</div>
+            
+            <div>95KW</div>
+            
+            <div>Flower</div>
+            
+            <div>100KW</div>
+            
+    
+            </div>
+            
+            <style>
+            .stApp{{
+                 background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWHAv7yfaejyXBt__hdkQmeWY6lt3Rn51OVGzDX3xsageZfhaeX8lUj36R5XW6acKMeMYoCo2jONj-qc1yrPuNFtSJnEyqtNq59zYwv_h1mXvkc83_49MoExZfzHTkVKmbhWF_pCJUwzFyr4Luh0ljsRwM_Qb2PuFIQQRzV_-22pb5IbQsMXbYkYdLp9WJ/s16000/Screen%20Shot%202024-08-20%20at%2012.39.43%20PM.png");
+                background-size: cover;  
+               background-color: rgba(255, 255, 255, 0.8); 
+              
+                       
+            
+            }}
+            
+            .Grid{{
+            display:grid;
+            grid-template-columns: auto auto;
+            
+            text-align: center;
+            color:rgba(255, 255, 255, 0.8);
+            font-family: Arial;
+            
+            }}
+            .gridtitle{{
+            font-size: 25px;
+            font-weight: bold;
+            color: rgb(211, 33, 40);
+            margin-bottom: 8px;
+            }}
+            
+            </style>
+            """,
+        unsafe_allow_html=True
+    )
+
+
 
 def search_menu():
     st.text_input(" ", placeholder="Search")
+
+def Receipt():
+    st.markdown(
+        f"""
+                <div class="Grid">
+                <div class="gridtitle">Transaction ID</div>
+                <div class="gridtitle">Dates</div>
+                <div class="gridtitle">Meter Value</div>
+                <div class="gridtitle">Price</div>
+                <div class="gridtitle">Duration</div>
+
+
+                <div>201</div>
+                <div>28-8-24</div>
+                <div>90KM</div>
+                <div>$50</div>
+                <div>1 Hour</div>
+                <div>202</div>
+                <div>28-8-24</div>
+                <div>65KM</div>
+                <div>$30</div>
+                <div>45 Minutes</div>
+                
+
+
+                </div>
+
+                <style>
+                .stApp{{
+                     background-image: url(" ");
+                    background-size: cover;  
+                   background-color: rgba(255, 255, 255, 0.8); 
+
+
+
+                }}
+
+                .Grid{{
+                display:grid;
+                grid-template-columns: auto auto auto auto auto ;
+
+                text-align: center;
+                color:rgba(255, 255, 255, 0.8);
+                font-family: Arial;
+
+                }}
+                .gridtitle{{
+                font-size: 25px;
+                font-weight: bold;
+                color: rgb(211, 33, 40);
+                margin-bottom: 8px;
+                }}
+
+                </style>
+                """,
+        unsafe_allow_html=True
+    )
+
 
 def supportus():
     st.markdown("### Charging Support\n")
@@ -90,6 +199,8 @@ functions = {
     "Home": add_bg_from_local,
     "Search": search_menu,
     "Support": supportus,
+    "Chargers": ChargerInfo,
+    "Transactions": Receipt,
 }
 go_to = functions.get(page)
 if go_to :
