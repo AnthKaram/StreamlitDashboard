@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",
 )
 
-pages = ["Chargers", "Transactions", "Meter Vaules", "Support", "Search"]
+pages = ["Chargers", "Transactions", "Support", "Search"]
 
 
 styles = {
@@ -20,7 +20,7 @@ styles = {
         "background-color":"rgb(0,0,0)"
     },
     "div": {
-        "max-width": "35rem",
+        "max-width": "25rem",
     },
     "span": {
         "border-radius": "0.9rem",
@@ -81,7 +81,6 @@ def supportus():
 
     st.markdown("**Contact Us:**\n")
     st.markdown("- **Phone:** (+961) 01 255 366")
-    st.markdown("- **Email:** MercedesSupport@chargingsolutions.com")
     st.markdown("- **Address:** Mercedes-Benz Building, Dora Highway, Beirut")
     st.markdown(
         "Our support team is available Monday through Friday, 9 AM to 6 PM PST. Don’t hesitate to reach out if you need help—your satisfaction is our top priority!")
