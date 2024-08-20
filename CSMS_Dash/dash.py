@@ -140,7 +140,7 @@ def Receipt():
 
                 <style>
                 .stApp{{
-                     background-image: url(" ");
+                     background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/70fde993027339.5e5a54de6362e.jpg");
                     background-size: cover;  
                    background-color: rgba(255, 255, 255, 0.8); 
 
