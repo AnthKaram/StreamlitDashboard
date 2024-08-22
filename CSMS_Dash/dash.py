@@ -4,13 +4,14 @@ import streamlit as st
 from streamlit_navigation_bar import st_navbar
 
 dir=os.path.dirname(os.path.abspath(__file__))
-logo_path=os.path.join(dir, "MB-star_n_web.svg")
+logo_path=os.path.join(dir, "MB-star_n_web.svg")	#Mercedes Logo
 
 st.set_page_config(
     page_title="CSMS Dashboard",
     page_icon=logo_path,
     layout="wide",
 )
+
 
 pages = ["Chargers", "Transactions", "Support", "Search"]
 
@@ -23,16 +24,16 @@ styles = {
         "max-width": "25rem",
     },
     "span": {
-        "border-radius": "0.9rem",
         "font-size":"15px",
         "color": "rgba(255, 255, 255, 0.8)",
         "margin": "0 0.125rem",
         "padding": "0.4375rem 0.625rem",
-        "transition": "color, 0.2s",
+        "transition": "color, 0.4s",
     },
     "active": {
         "color":"rgb(211, 33, 40)",
-        "font-size":"18px",
+        "font-size":"16.5px",
+        "font-weight":"normal",
     },
     "hover": {
         "color":"rgb(211, 33, 40)",
@@ -42,6 +43,10 @@ styles = {
 page = st_navbar(pages,
                  logo_path=logo_path,
                  styles=styles)
+                 
+st.markdown(f"""
+	<style>.stApp{{font-family: Arial;}}</style>
+""", unsafe_allow_html=True)
 
 def add_bg_from_local():
     html_string ="<blockquote style=\"font-size: 32px;\"><b> <i> THE BEST OR NOTHING </i></b> </blockquote>"
@@ -51,71 +56,71 @@ def add_bg_from_local():
         <style>
         .stApp {{
             background-image: url("https://static0.carbuzzimages.com/wordpress/wp-content/uploads/gallery-images/original/835000/800/835890.jpg");
+            background-color: rgb(0,0,0);
             background-size: cover;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
-def ChargerInfo():
+    
+def ChargerTab():
     st.markdown(
         f"""
             <div class="Grid">
+            
             <div class="gridtitle">Charger</div>
-            
             <div class="gridtitle">Meter Values</div>
-            
+ 
             <div>WallBox</div>
+            <div>95 kW</div>
             
-            <div>95KW</div>
-            
-            <div>Flower</div>
-            
-            <div>100KW</div>
+            <div>Borgwarner</div>
+            <div>100 kW</div>
             
     
             </div>
             
+            
             <style>
             .stApp{{
-                 background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWHAv7yfaejyXBt__hdkQmeWY6lt3Rn51OVGzDX3xsageZfhaeX8lUj36R5XW6acKMeMYoCo2jONj-qc1yrPuNFtSJnEyqtNq59zYwv_h1mXvkc83_49MoExZfzHTkVKmbhWF_pCJUwzFyr4Luh0ljsRwM_Qb2PuFIQQRzV_-22pb5IbQsMXbYkYdLp9WJ/s16000/Screen%20Shot%202024-08-20%20at%2012.39.43%20PM.png");
-                background-size: cover;  
-               background-color: rgba(255, 255, 255, 0.8); 
-              
-                       
-            
-            }}
+                
+                background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiwC-Tif0OCHlPtEHcVmpRC8QC70R35LMlH5lMN7AkKYaOtZuhYRsSDdF6SGUTPjn2CirvgpsOEdxOxMu7Dfol6Ql-vcEpuElYYZCd-giSKrwrnpNGIpWvE-CmGY7BbYKyzrxjw1yioCUbHx74Wi0UOH_vcYEsqDYcw3v9c-tb_k-yITj8B4oTrae1tibL/s16000/victor-sutty-Sv0AxtA8YxI-unsplash.jpg");
+              	background-color: rgba(0,0,0); 
+                background-size: cover;
+             }}
             
             .Grid{{
-            display:grid;
-            grid-template-columns: auto auto;
+            	display:grid;
+            	grid-template-columns: auto auto;
             
-            text-align: center;
-            color:rgba(255, 255, 255, 0.8);
-            font-family: Arial;
-            
+            	text-align: center;
+            	color:rgba(255, 255, 255, 0.8);
+            	font-family: Arial;
             }}
+            
             .gridtitle{{
-            font-size: 25px;
-            font-weight: bold;
-            color: rgb(211, 33, 40);
-            margin-bottom: 8px;
+                font-size: 25px;
+                font-weight: bold;
+                color: rgb(181,186,189);
+                margin-bottom: 8px;
             }}
             
             </style>
             """,
+            
         unsafe_allow_html=True
     )
 
 
-
-def search_menu():
+def SearchTab():
     st.text_input(" ", placeholder="Search")
 
-def Receipt():
+def TransactionsTab():
     st.markdown(
         f"""
                 <div class="Grid">
+                
                 <div class="gridtitle">Transaction ID</div>
                 <div class="gridtitle">Dates</div>
                 <div class="gridtitle">Meter Value</div>
@@ -125,43 +130,41 @@ def Receipt():
 
                 <div>201</div>
                 <div>28-8-24</div>
-                <div>90KM</div>
+                <div>90 kW</div>
                 <div>$50</div>
                 <div>1 Hour</div>
+                
                 <div>202</div>
                 <div>28-8-24</div>
-                <div>65KM</div>
+                <div>65 kW</div>
                 <div>$30</div>
                 <div>45 Minutes</div>
                 
-
-
                 </div>
 
                 <style>
                 .stApp{{
-                     background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/70fde993027339.5e5a54de6362e.jpg");
-                    background-size: cover;  
-                   background-color: rgba(255, 255, 255, 0.8); 
+                   background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJTxnU-BU_zSA-ko8K56pKh1_WseIFpYsaZzQwqeGzVTz1rSRqGF1KhU88zJPDO0oGj0anBUKtQ4XlDYS8h_y-3z_BuHnuktxIPFOapoFWtkinJ4rkpg9KRJqeHN8HeHm74L_nf3wy6FYrEC3yYSvungEyYqjtjXhjB6gdvEy46_t0zH0OrdV3Vgk0oNFP/s16000/70fde993027339.5e5a54de6362e.jpg");
+                   background-color: rgba(0,0,0); 
+                   background-size: cover;
 
 
 
                 }}
 
                 .Grid{{
-                display:grid;
-                grid-template-columns: auto auto auto auto auto ;
+                		display:grid;
+                		grid-template-columns: auto auto auto auto auto ;
 
-                text-align: center;
-                color:rgba(255, 255, 255, 0.8);
-                font-family: Arial;
-
-                }}
+                		text-align: center;
+                		color:rgba(255, 255, 255, 0.8);
+                	}}
+                
                 .gridtitle{{
-                font-size: 25px;
-                font-weight: bold;
-                color: rgb(211, 33, 40);
-                margin-bottom: 8px;
+                		font-size: 25px;
+               		font-weight: bold;
+                		color: rgb(181,186,189);
+                		margin-bottom: 8px;
                 }}
 
                 </style>
@@ -170,7 +173,7 @@ def Receipt():
     )
 
 
-def supportus():
+def SupportTab():
     st.markdown("### Charging Support\n")
 
     st.markdown("**Welcome to our Charging Support Center!**\n")
@@ -197,10 +200,10 @@ def supportus():
 
 functions = {
     "Home": add_bg_from_local,
-    "Search": search_menu,
-    "Support": supportus,
-    "Chargers": ChargerInfo,
-    "Transactions": Receipt,
+    "Search": SearchTab,
+    "Support": SupportTab,
+    "Chargers": ChargerTab,
+    "Transactions": TransactionsTab,
 }
 go_to = functions.get(page)
 if go_to :
