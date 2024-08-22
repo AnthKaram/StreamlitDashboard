@@ -66,6 +66,7 @@ def add_bg_from_local():
     )
     
 def ChargerTab():
+    '''
     st.markdown(
         f"""
             <div class="Grid">
@@ -111,7 +112,28 @@ def ChargerTab():
             """,
             
         unsafe_allow_html=True
+    )'''
+    st.markdown(
+        f"""
+               <style>
+               .stApp{{
+
+                   background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiwC-Tif0OCHlPtEHcVmpRC8QC70R35LMlH5lMN7AkKYaOtZuhYRsSDdF6SGUTPjn2CirvgpsOEdxOxMu7Dfol6Ql-vcEpuElYYZCd-giSKrwrnpNGIpWvE-CmGY7BbYKyzrxjw1yioCUbHx74Wi0UOH_vcYEsqDYcw3v9c-tb_k-yITj8B4oTrae1tibL/s16000/victor-sutty-Sv0AxtA8YxI-unsplash.jpg");
+                 	background-color: rgba(0,0,0); 
+                   background-size: cover;
+                }}
+               </style>
+               """,
+
+        unsafe_allow_html=True
     )
+    sheet_id = "1LXxC94iQ0-M_MT32Cr4pa9WFvfwC0jsG0tua_H0xz00"
+    sheet_name = "EVCharger"
+    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+    df = pd.read_csv(url, dtype=str)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed', 'Chargers')]
+    df = df.drop(['TransactionID','TransactionDate','Price','TMeterValues','TransactionDuration'],axis=1)
+    st.write(df)
 
 
 def SearchTab():
@@ -136,6 +158,7 @@ def SearchTab():
 
 
 def TransactionsTab():
+    '''
     st.markdown(
         f"""
                 <div class="Grid">
@@ -189,7 +212,26 @@ def TransactionsTab():
                 </style>
                 """,
         unsafe_allow_html=True
+    )'''
+    st.markdown(
+        f"""
+                   <style>
+                   .stApp{{
+                      background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJTxnU-BU_zSA-ko8K56pKh1_WseIFpYsaZzQwqeGzVTz1rSRqGF1KhU88zJPDO0oGj0anBUKtQ4XlDYS8h_y-3z_BuHnuktxIPFOapoFWtkinJ4rkpg9KRJqeHN8HeHm74L_nf3wy6FYrEC3yYSvungEyYqjtjXhjB6gdvEy46_t0zH0OrdV3Vgk0oNFP/s16000/70fde993027339.5e5a54de6362e.jpg");
+                      background-color: rgba(0,0,0); 
+                      background-size: cover;
+                   }}
+                   </style>
+                   """,
+        unsafe_allow_html=True
     )
+    sheet_id = "1LXxC94iQ0-M_MT32Cr4pa9WFvfwC0jsG0tua_H0xz00"
+    sheet_name = "EVCharger"
+    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+    df = pd.read_csv(url, dtype=str)
+    df = df.loc[:, ~df.columns.str.contains('^Unnamed', 'Chargers')]
+    df = df.drop(['Chargers', 'CMeterValues'], axis=1)
+    st.write(df)
 
 
 def SupportTab():
