@@ -2,6 +2,7 @@ import os
 
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
+import pandas as pd
 
 dir=os.path.dirname(os.path.abspath(__file__))
 logo_path=os.path.join(dir, "MB-star_n_web.svg")	#Mercedes Logo
@@ -114,7 +115,25 @@ def ChargerTab():
 
 
 def SearchTab():
-    st.text_input(" ", placeholder="Search")
+    sheet_id= "1LXxC94iQ0-M_MT32Cr4pa9WFvfwC0jsG0tua_H0xz00"
+    sheet_name="EVCharger"
+    url= f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+    df=pd.read_csv(url,dtype=str)
+    Txt_search=st.text_input(" ", placeholder="Search by Transaction Date, Transaction ID, and Charger Name", value="")
+    m1= df["Chargers"].str.contains(Txt_search)
+    m2= df["TransactionID"].str.contains(Txt_search)
+    m3= df["TransactionDate"].str.contains(Txt_search)
+    df_search=df[m1 | m2 | m3]
+    df_search = df.loc[:, ~df_search.columns.str.contains('^Unnamed','Chargers')]
+    #df_search = df_search.drop(['Chargers','price'],axis=1) remove columns
+    if Txt_search:
+        st.write(df_search)
+
+
+
+
+
+
 
 def TransactionsTab():
     st.markdown(
