@@ -46,7 +46,8 @@ page = st_navbar(pages,
                  styles=styles)
                  
 st.markdown(f"""
-	<style>.stApp{{font-family: Arial;}}</style>
+	<style>.stApp{{font-family: Arial;}}
+	</style>
 """, unsafe_allow_html=True)
 
 def add_bg_from_local():
@@ -122,6 +123,8 @@ def ChargerTab():
                  	background-color: rgba(0,0,0); 
                    background-size: cover;
                 }}
+                
+                div{{text-align:center;}}
                </style>
                """,
 
@@ -221,6 +224,7 @@ def TransactionsTab():
                       background-color: rgba(0,0,0); 
                       background-size: cover;
                    }}
+                   div{{text-align:center;}}
                    </style>
                    """,
         unsafe_allow_html=True
