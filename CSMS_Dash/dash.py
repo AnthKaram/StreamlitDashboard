@@ -46,12 +46,12 @@ page = st_navbar(pages,
                  styles=styles)
                  
 st.markdown(f"""
-	<style>.stApp{{font-family: Arial;}}
+	<style>:root{{font-family: Arial; }}
 	</style>
 """, unsafe_allow_html=True)
 
 def add_bg_from_local():
-    html_string ="<blockquote style=\"font-size: 32px;\"><b> <i> THE BEST OR NOTHING </i></b> </blockquote>"
+    html_string ="<blockquote style=\"font-size: 32px;color:white;\"><b> <i> THE BEST OR NOTHING </i></b> </blockquote>"
     st.markdown(html_string, unsafe_allow_html=True)
     st.markdown(
         f"""
@@ -124,7 +124,7 @@ def ChargerTab():
                    background-size: cover;
                 }}
                 
-                div{{text-align:center;}}
+                div{{text-align: center;}}
                </style>
                """,
 
@@ -135,21 +135,30 @@ def ChargerTab():
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     df = pd.read_csv(url, dtype=str)
     df = df.loc[:, ~df.columns.str.contains('^Unnamed', 'Chargers')]
-    df = df.drop(['TransactionID','TransactionDate','Price','TMeterValues','TransactionDuration'],axis=1)
+    df = df.drop(['TransactionID','TransactionDate','Price','Charging Amount','TransactionDuration'],axis=1)
     st.write(df)
 
 
 def SearchTab():
+    st.markdown(
+        f"""
+                   <style>
+                    div{{text-align: center;}}
+                   </style>
+                   """,
+
+        unsafe_allow_html=True
+    )
     sheet_id= "1LXxC94iQ0-M_MT32Cr4pa9WFvfwC0jsG0tua_H0xz00"
     sheet_name="EVCharger"
     url= f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     df=pd.read_csv(url,dtype=str)
-    Txt_search=st.text_input(" ", placeholder="Search by Transaction Date, Transaction ID, and Charger Name", value="")
+    Txt_search=st.text_input(" ", placeholder="Search by Transaction Date, Transaction ID, or Charger Name", value="")
     m1= df["Chargers"].str.contains(Txt_search)
     m2= df["TransactionID"].str.contains(Txt_search)
     m3= df["TransactionDate"].str.contains(Txt_search)
     df_search=df[m1 | m2 | m3]
-    df_search = df.loc[:, ~df_search.columns.str.contains('^Unnamed','Chargers')]
+    df_search = df_search.loc[:, ~df_search.columns.str.contains('^Unnamed')]
     #df_search = df_search.drop(['Chargers','price'],axis=1) remove columns
     if Txt_search:
         st.write(df_search)
@@ -234,7 +243,7 @@ def TransactionsTab():
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     df = pd.read_csv(url, dtype=str)
     df = df.loc[:, ~df.columns.str.contains('^Unnamed', 'Chargers')]
-    df = df.drop(['Chargers', 'CMeterValues'], axis=1)
+    df = df.drop(['Chargers', 'Meter Values', 'SOC'], axis=1)
     st.write(df)
 
 
