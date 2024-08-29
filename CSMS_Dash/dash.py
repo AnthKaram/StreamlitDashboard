@@ -1,6 +1,7 @@
 import os
 
 import streamlit as st
+from streamlit import markdown
 from streamlit_navigation_bar import st_navbar
 import pandas as pd
 
@@ -271,6 +272,15 @@ def SupportTab():
     st.markdown(
         "Our support team is available Monday through Friday, 9 AM to 6 PM PST. Don’t hesitate to reach out if you need help—your satisfaction is our top priority!")
 
+    st.markdown(
+        f"""
+                   <style>
+                   .stApp{{
+                      background-color: rgba(0,0,0);
+                   }}
+                   </style>
+                   """,
+        unsafe_allow_html=True)
 
 functions = {
     "Home": add_bg_from_local,

@@ -1,13 +1,22 @@
 import asyncio
 import logging
 import websockets
+import random
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import pprint
+
 from datetime import datetime
 
 from ocpp.routing import on
 from ocpp.v16 import ChargePoint as cp
 from ocpp.v16 import call_result, call
-from ocpp.v16.datatypes import SampledValue
+from ocpp.v16.datatypes import SampledValue, MeterValue
 from ocpp.v16.enums import Action, RegistrationStatus, RemoteStartStopStatus
+
+from CSMS_Dash.Backend.ChargerSimV20 import meter_value_soc
+
+#globalvars
 
 logging.basicConfig(level=logging.INFO)
 meter_value_power_active_import = SampledValue(
@@ -20,6 +29,7 @@ class ChargePoint(cp):
             current_time=datetime.utcnow().isoformat(),
             interval=10,
             status=RegistrationStatus.accepted
+
         )
 
     async def send_notification(self):
@@ -32,7 +42,30 @@ class ChargePoint(cp):
             print("sent to central system.")
 
     @on(Action.MeterValues)
-    async def on_meterValues(self, **kwargs):
+    async def on_meterValues(self,meter_value, **kwargs):
+        # Authorize the API
+        scope = [
+            'https://www.googleapis.com/auth/drive',
+            'https://www.googleapis.com/auth/drive.file'
+        ]
+        file_name = 'client_key.json'
+        creds = ServiceAccountCredentials.from_json_keyfile_name(file_name, scope)
+        client = gspread.authorize(creds)
+
+        # Fetch the sheet
+        sheet = client.open('EVCharger').worksheet('EVCharger')
+        python_sheet = sheet.get_all_records()
+        pp = pprint.PrettyPrinter()
+        pp.pprint(python_sheet)
+        # sheet.update_cell(rowCur12, 1, charge_point_model)
+
+        # Insert Row
+        chargingAmount = random.randrange(60)
+
+        row = ['Wallbox','60kW',str(meter_value[0]['sampled_value'][0]['value'])+'%',random.randrange(1000),str(meter_value[0]['timestamp']), str(random.randrange(60))+ "min", chargingAmount * 0.5, str(chargingAmount) +"kW"]
+        index = 2
+        sheet.insert_row(row, index)
+
         return call_result.MeterValues(
         )
 
@@ -75,7 +108,7 @@ async def on_connect(websocket, path):
 async def main():
     server = await websockets.serve(
         on_connect,
-        '192.168.201.124',#ipv4
+        'localhost',#ipv4
         443,
         subprotocols=['ocpp1.6']
     ) #port 443

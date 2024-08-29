@@ -27,6 +27,7 @@
 
 import asyncio
 import logging
+import random
 from datetime import datetime, timedelta
 import websockets
 import sys
@@ -82,7 +83,7 @@ charging_meter_value_voltage_L3 = '220'
 charging_meter_value_energy_active_import_register_value = '18569'
 charging_meter_value_power_offered_value = '0.25'
 charging_meter_value_temperature_value = '50'
-charging_meter_value_soc_value = '57'
+charging_meter_value_soc_value = str(random.randrange(100))
 
 stopped_meter_value_power_active_import_value = '0'
 stopped_meter_value_voltage_L1 = '0'
@@ -252,7 +253,7 @@ class ChargePoint(cp):
                     timestamp=datetime.utcnow().isoformat(),
 
                     sampled_value=[
-                        meter_value_power_active_import
+                        meter_value_soc
                     ]
                 )
             ]
@@ -393,7 +394,7 @@ async def main():
     #if len(args) > 0:
      #   CP_VENDOR = args[0]
     async with websockets.connect(
-        'ws://192.168.201.124:443/CP_1',
+        'ws://localhost:443/CP_1',
         subprotocols=['ocpp1.6']
     ) as ws:
 
