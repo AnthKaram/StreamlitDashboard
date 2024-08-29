@@ -23,8 +23,11 @@ meter_value_power_active_import = SampledValue(
     value='0', context='Sample.Periodic', format=None, measurand='Power.Active.Import', location=None, unit='W')
 
 class ChargePoint(cp):
+
     @on(Action.BootNotification)
     async def on_boot_notification(self, charge_point_model, charge_point_vendor, **kwargs):
+        global test
+        test= charge_point_model
         return call_result.BootNotificationPayload(
             current_time=datetime.utcnow().isoformat(),
             interval=10,
@@ -62,7 +65,7 @@ class ChargePoint(cp):
         # Insert Row
         chargingAmount = random.randrange(60)
 
-        row = ['Wallbox','60kW',str(meter_value[0]['sampled_value'][0]['value'])+'%',random.randrange(1000),str(meter_value[0]['timestamp']), str(random.randrange(60))+ "min", chargingAmount * 0.5, str(chargingAmount) +"kW"]
+        row = [test,'60kW',str(meter_value[0]['sampled_value'][0]['value'])+'%',random.randrange(1000),str(meter_value[0]['timestamp']), str(random.randrange(60))+ "min", chargingAmount * 0.5, str(chargingAmount) +"kW"]
         index = 2
         sheet.insert_row(row, index)
 

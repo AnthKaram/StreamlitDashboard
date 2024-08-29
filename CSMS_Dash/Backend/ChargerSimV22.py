@@ -109,7 +109,7 @@ def restore_from_limit_power():
 class ChargePoint(cp):
     async def send_boot_notification(self):
         request = call.BootNotificationPayload(
-            charge_point_model="Wallbox 1",
+            charge_point_model="Wallbox 2",
             charge_point_vendor="Mercedes",
             charge_box_serial_number="1337",
             charge_point_serial_number="001",

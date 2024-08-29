@@ -1,9 +1,10 @@
 import os
-
+import time
 import streamlit as st
 from streamlit import markdown
 from streamlit_navigation_bar import st_navbar
 import pandas as pd
+
 
 dir=os.path.dirname(os.path.abspath(__file__))
 logo_path=os.path.join(dir, "MB-star_n_web.svg")	#Mercedes Logo
@@ -64,8 +65,7 @@ def add_bg_from_local():
         }}
         </style>
         """,
-        unsafe_allow_html=True
-    )
+        unsafe_allow_html=True)
     
 def ChargerTab():
     '''
@@ -131,6 +131,7 @@ def ChargerTab():
 
         unsafe_allow_html=True
     )
+
     sheet_id = "1LXxC94iQ0-M_MT32Cr4pa9WFvfwC0jsG0tua_H0xz00"
     sheet_name = "EVCharger"
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
@@ -164,6 +165,16 @@ def SearchTab():
     if Txt_search:
         st.write(df_search)
 
+    st.markdown(
+        f"""
+                   <style>
+                   .stApp{{
+                      background-color: rgba(0,0,0);
+                   }}
+                   </style>
+                   """,
+        unsafe_allow_html=True)
+
 
 
 
@@ -171,6 +182,7 @@ def SearchTab():
 
 
 def TransactionsTab():
+
     '''
     st.markdown(
         f"""
@@ -226,6 +238,10 @@ def TransactionsTab():
                 """,
         unsafe_allow_html=True
     )'''
+
+
+
+
     st.markdown(
         f"""
                    <style>
